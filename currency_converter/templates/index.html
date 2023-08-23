@@ -1,0 +1,25 @@
+<!-- templates/index.html -->
+
+<head>
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<div class="container">
+    <form action="/" method="post">
+        From: <input type="text" name="from_currency" required><br>
+        To: <input type="text" name="to_currency" required><br>
+        Amount: <input type="text" name="amount" required><br>
+        <input type="submit" value="Convert">
+    
+    </form>
+</div>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+
+    <!-- Form for input -->
+    <form action="/" method="post">
+        
+        <!-- From Currency Dropdown -->
+From: 
+<select name="from_currency">
+    {% for currency in currencies %}
+        <option value="{{ currency }}">{{ currency }}</option>
+    {% endfor %}
+</select>
+
+<!-- To Currency Dropdown -->
+To: 
+<select name="to_currency">
+    {% for currency in currencies %}
+        <option value="{{ currency }}">{{ currency }}</option>
+    {% endfor %}
+</select>
+
+        Amount: <input type="text" name="amount" placeholder="Amount" value="{{ request.form['amount'] }}">
+        <input type="submit" value="Convert">
+    </form>
+
+    <!-- Display Flashed Messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            ...
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+            ...
+        {% endif %}
+    {% endwith %}
+
+
+
+    <!-- Display Result -->
+    {% if result %}
+    <div class="result">{{ result }}</div>
+    {% endif %}
+
+    {% if error %}
+    <div class="error-message">
+        {{ error }}
+    </div>
+    {% endif %}
+    
+
+</div>
+</body>
+</html>

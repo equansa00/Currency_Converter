@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 400: Bad Request</title>
+    <!-- You can link to your CSS here, if you have one -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Error 400: Bad Request</h1>
+        <p>Sorry, something went wrong with your request.</p>
+        <!-- Displaying the error passed from Flask, if any -->
+        {% if error %}
+        <p><strong>Error Details:</strong> {{ error }}</p>
+        {% endif %}
+        <p><a href="{{ url_for('index') }}">Return to Home</a></p>
+    </div>
+</body>
+</html>
